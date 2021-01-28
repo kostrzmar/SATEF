@@ -8,6 +8,7 @@ python satef.py -conf conf.yaml
 SATEF supports:
 
 https://github.com/ghpaetzold/massalign
+```
 @inproceedings{paetzold-etal-2017-massalign,
     title = "{MASSA}lign: Alignment and Annotation of Comparable Documents",
     author = "Paetzold, Gustavo  and
@@ -22,8 +23,10 @@ https://github.com/ghpaetzold/massalign
     pages = "1--4",
     abstract = "We introduce MASSAlign: a Python library for the alignment and annotation of monolingual comparable documents. MASSAlign offers easy-to-use access to state of the art algorithms for paragraph and sentence-level alignment, as well as novel algorithms for word-level annotation of transformation operations between aligned sentences. In addition, MASSAlign provides a visualization module to display and analyze the alignments and annotations performed.",
 }
+```
 
 https://github.com/ninikolov/lha
+```
 @InProceedings{nikolov-alignment-ranlp19,
   author    = {Nikolov, Nikola  and  Hahnloser, Richard},
   title     = {Large-scale Hierarchical Alignment for Data-driven Text Rewriting},
@@ -42,10 +45,10 @@ https://pypi.org/project/sentence-transformers/
     year = "2020",
     url = "http://arxiv.org/abs/2004.09813",
 }
-
+```
 
 https://github.com/neosyon/SimpTextAlign
-
+```
 @inproceedings{StajnerACL17,
   author    = {Sanja Stajner and
                Marc Franco{-}Salvador and
@@ -63,7 +66,7 @@ https://github.com/neosyon/SimpTextAlign
   timestamp = {Fri, 04 Aug 2017 16:38:24 +0200},
   biburl    = {https://dblp.org/rec/bib/conf/acl/StajnerFPRS17}
 }
-
+```
 
 
 
