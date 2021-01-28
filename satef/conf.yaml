@@ -1,0 +1,74 @@
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/test/input
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: .simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False  
+engine: 
+  engine.execute.parallel: False
+  engine.execute.parallel.number.of.processes: 18
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: NAIVE
+  alignment.output.path: /data/test/output
+evaluate:
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/test/input
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: .simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False  
+engine: 
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 2
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/test/output
+  alignment.massalign.paragraph.acceptable.similarity: 0.2
+  alignment.massalign.sentence.acceptable.similarity: 0.1
+  alignment.massalign.sentence.similarity.slack: 0.05
+  alignment.transformer.min.similarity: 0.7
+  alignment.transformer.model: bert-base-nli-mean-tokens
+evaluate:
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---  
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/test/input
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: .simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: True  
+engine: 
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 8
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: LHA
+  alignment.lha.path: /Development/TextAlignment/lha_v2
+  alignment.output.path: /data/test/output
+evaluate:
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE

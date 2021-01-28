@@ -1,0 +1,11 @@
+sentence_transformers==0.4.0
+coloredlogs==14.0
+rouge==1.0.0
+transformers==3.5.1
+scipy==1.4.1
+bert_score==0.3.7
+torch==1.7.0
+tqdm==4.43.0
+nltk==3.4.5
+numpy==1.18.1
+PyYAML==5.3.1

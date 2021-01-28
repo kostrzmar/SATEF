@@ -1,0 +1,183 @@
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/APA/A2-OR
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: _A2.simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/APA/A2-OR
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/APA/B1-OR
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: _B1.simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/APA/B1-OR
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/CAP/A1-OR
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: _A1.simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/CAP/A1-OR
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/CAP/A2-OR
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: _A2.simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/CAP/A2-OR
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/CAP/B1-OR
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: _B1.simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/CAP/B1-OR
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/WEBCOR/parallel
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: .simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/WEBCOR/parallel
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+---
+dataset:
+  dataset.type: SIMPLE_COMPLEX_PAIR
+  dataset.path: /data/eval_orig_docs/input/WIKI/simple-complex
+  dataset.original.document.mask: .de
+  dataset.original.document.mask.prefix: COMPLEX
+  dataset.paraphrase.document.mask: .simpde
+  dataset.paraphrase.document.mask.prefix: SIMPLE
+  dataset.alignment.reverse: False
+engine:
+  engine.execute.parallel: True
+  engine.execute.parallel.number.of.processes: 4
+  engine.execute.processing.info: True
+alignment:
+  alignment.type: TRANSFORMER
+  alignment.output.path: /data/eval_orig_docs/output/WIKI/simple-complex
+  alignment.transformer.model: bert-base-nli-mean-tokens
+  alignment.transformer.min.similarity: 0.7
+evaluate:
+  metrics.bert_score.model: bert-base-multilingual-cased
+  metrics:
+    - METEOR
+    - BLEU
+    - ROUGE
+    - BERT_SCORE
+...
+
