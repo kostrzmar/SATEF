@@ -7,4 +7,9 @@ from .MASSAlignAlignmentFactory import MASSAlignAlignmentFactory
 from .TransformerEmbedder import TransformerEmbedder
 from .TransformerAlignment import TransformerAlignment
 from .TransformerAlignmentFactory import TransformerAlignmentFactory
+from .CATSAlignment import CATSAlignment
+from .CATSAlignmentFactory import CATSAlignmentFactory
+from .VecalignAlignment import VecalignAlignment
+from .VecalignAlignmentFactory import VecalignAlignmentFactory
+
 

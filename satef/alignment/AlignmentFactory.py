@@ -1,5 +1,5 @@
 from alignment import AbstractAlignment
-from alignment.impl import NaiveAlignmentFactory, MASSAlignAlignmentFactory, LHAAlignmentFactory, TransformerAlignmentFactory
+from alignment.impl import NaiveAlignmentFactory, MASSAlignAlignmentFactory, LHAAlignmentFactory, TransformerAlignmentFactory, CATSAlignmentFactory, VecalignAlignmentFactory
 from tools import ConfigConsts
 from alignment import AbstractAlignmentFactory
 
@@ -17,26 +17,11 @@ class AlignmentFactory:
             alignment_factory = LHAAlignmentFactory()
         elif aligmentType == ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_TRANSFORMER:
             alignment_factory = TransformerAlignmentFactory()    
+        elif aligmentType == ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_CATS:
+            alignment_factory = CATSAlignmentFactory()
+        elif aligmentType == ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN:
+            alignment_factory = VecalignAlignmentFactory()    
         assert alignment_factory, "Alignment Factory unknow"
         alignment_job = alignment_factory.getAlignment()
         
         return alignment_job 
-
-"""
-    def getAlignment(self, alignmentType, config_parser, to_process, to_align, direction_prefix, unique_processing_stats_file_name):
-        if alignmentType == "LHA":
-            return LHAAlignment(config_parser, to_process, to_align, direction_prefix, unique_processing_stats_file_name)
-        if alignmentType == "TRANSFORMER":
-            
-            return TransformerAlignment(config_parser, to_process, to_align, direction_prefix, unique_processing_stats_file_name)
-            "" "
-            transformerEmbedder = TransformerEmbedder(config_parser[consts.CONF_SEC_ALIGNMENT_TOOL][consts.CONF_ALIGNMENT_TOOL_TYPE_TRANSFORMER_MODEL])
-            return TransformerAlignment(config_parser, to_process, to_align, direction_prefix, unique_processing_stats_file_name, embedder=transformerEmbedder)
-            "" "
-        if alignmentType == "NAIVE":
-            return NaiveAlignment(config_parser, to_process, to_align, direction_prefix, unique_processing_stats_file_name)
-        if alignmentType == 'MASSALIGN':
-            return MASSAlignAlignment(config_parser, to_process, to_align, direction_prefix, unique_processing_stats_file_name)
-        return None 
-
-"""

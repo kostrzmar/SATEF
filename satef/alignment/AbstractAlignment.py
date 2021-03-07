@@ -110,7 +110,7 @@ class AbstractAlignment(ABC):
         return self.getAbsoluteFileName( fileOutFileName)
     
     def cleanTest(self, stringToCleanup):
-        chars = ";\"'"
+        chars = "\n;\"'"
         for c in chars:
             stringToCleanup = stringToCleanup.replace(c, ' ')
         return stringToCleanup
@@ -140,18 +140,3 @@ class AbstractAlignment(ABC):
             if addHeader:
                 writer.writerow(stats.getHeaders())
             writer.writerow(stats.getValues())
-
-
-       
-    def getRogueScore(self, process, align):
-        #todo
-        return 0 
-
-
-    def getBlueScore(self, process, align):
-        #todo
-        return 0 
-    
-    def getMereorScore(self, process, align):
-        #todo
-        return 0

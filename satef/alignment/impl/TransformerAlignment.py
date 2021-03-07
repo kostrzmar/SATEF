@@ -60,8 +60,6 @@ class TransformerAlignment(AbstractAlignment):
                     match.process_line = self.cleanTest(query.strip().rstrip())
                     match.align_line = self.cleanTest(to_align[idx].strip().rstrip())
                     match.similarity = 1-distance
-                    match.blue_score = self.getBlueScore(match.process_line, match.align_line)
-                    match.meteor_score = self.getMereorScore(match.process_line, match.align_line)
                     self.alignment_matches.append(match)
             queryNbr+=1
 

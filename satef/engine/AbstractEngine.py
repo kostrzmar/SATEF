@@ -81,16 +81,15 @@ class AbstractEngine(ABC):
 
     def execute(self) -> None:
         processing_info = self.local_config_utils.getValue(ConfigConsts.CONF_SEC_ENGINE, ConfigConsts.CONF_ENGINE_PROCESSING_INFO)
-        unique_processing_id = self.getUniqueProcessingId()   
         if self.local_config_utils.hasMultipleConfiguration():
             for conf_nbr in range(self.local_config_utils.getNumberOfConfiguration()):
                 self.local_config_utils.setActiveConfiguration(conf_nbr)
                 processing_info = self.local_config_utils.getValue(ConfigConsts.CONF_SEC_ENGINE, ConfigConsts.CONF_ENGINE_PROCESSING_INFO)
-                self.doProcessing(unique_processing_id)
+                self.doProcessing(self.getUniqueProcessingId())
                 if processing_info == str(True) or processing_info == True:
                     self.scanResults('similarity')
         else:
-            self.doProcessing(unique_processing_id)
+            self.doProcessing(self.getUniqueProcessingId())
             if processing_info == str(True) or processing_info == True:
                     self.scanResults('similarity')
 
