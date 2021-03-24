@@ -25,6 +25,7 @@ class CATSAlignment(AbstractAlignment):
         alignmentStrategy = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_STRATEGY)
         subLvAlignmentStrategy = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_SUBLEVEL_STRATEGY)
         embeddingsFile = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_CATS_EMBEDDING)
+        lineLevel = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_LINE_LEVEL)
         if len(similarityStrategy) == 3 and similarityStrategy[0]=='C' and similarityStrategy[-1]=='G':
             nGramSize = int(similarityStrategy[1])
             similarityStrategy = DefinedConstants.CNGstrategy
@@ -50,9 +51,9 @@ class CATSAlignment(AbstractAlignment):
             aux.processAndCountTextNgrams(text, alignmentLevel)
             aux.calculateIDF()
         text1 = MyIOutils.readTextFile(self.to_process.path_to_document)
-        cleanSubtexts1 = TextProcessingUtils.getCleanText(text1, alignmentLevel, similarityStrategy, model)
+        cleanSubtexts1 = TextProcessingUtils.getCleanText(text1, alignmentLevel, similarityStrategy, model, lineLevel)
         text2 = MyIOutils.readTextFile(self.to_align.path_to_document)
-        cleanSubtexts2 = TextProcessingUtils.getCleanText(text2, alignmentLevel, similarityStrategy, model)
+        cleanSubtexts2 = TextProcessingUtils.getCleanText(text2, alignmentLevel, similarityStrategy, model, lineLevel)
         alignments = VectorUtils.alignUsingStrategy(cleanSubtexts1,	cleanSubtexts2, similarityStrategy, alignmentStrategy, model)
         if  alignmentLevel == DefinedConstants.ParagraphSepEmptyLineAndSentenceLevel:
             alignments = VectorUtils.getSubLevelAlignments(alignments, cleanSubtexts1, cleanSubtexts2, similarityStrategy, subLvAlignmentStrategy, model)

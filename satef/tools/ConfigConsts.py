@@ -69,6 +69,7 @@ CONF_ALIGNMENT_TOOL_TYPE_CATS_LANGUAGE="alignment.cats.language"
 CONF_ALIGNMENT_TOOL_TYPE_CATS_SIMILARITY_STRATEGY="alignment.cats.similarity.strategy"
 CONF_ALIGNMENT_TOOL_TYPE_CATS_EMBEDDING="alignment.cats.embedding"
 CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_LEVEL= "alignment.cats.alignment.level"
+CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_LINE_LEVEL= "alignment.cats.alignment.linelevel"
 CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_STRATEGY= "alignment.cats.cats.alignment.strategy"
 CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_SUBLEVEL_STRATEGY= "alignment.cats.sublevel.strategy"
 
