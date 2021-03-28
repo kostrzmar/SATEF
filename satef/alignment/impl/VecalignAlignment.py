@@ -18,10 +18,19 @@ class VecalignAlignment(AbstractAlignment):
     def getOutputPrefix(self):
         return "VECALIGN"
 
-    def getAlignCommand(self, orginal, target):
-        scr_overlaps = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_SRC_OVERLAPS_PATH)
-        trg_overlaps = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_TRG_OVERLAPS_PATH)
-        return 'python "'+self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_PATH)+'/vecalign.py" --alignment_max_size '+str(self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_MAX_SIZE))+' --src "{}" --tgt "{}" --src_embed "{}" "{}"  --tgt_embed "{}" "{}" '.format(orginal, target, scr_overlaps, scr_overlaps+".emb", trg_overlaps, trg_overlaps+".emb")
+    def getOverLapCommand(self, fileName, overlapNbr):
+        return 'python "'+self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_PATH)+'/overlap.py" -i "{}" -o "{}.overlap" -n {}'.format(fileName, fileName, overlapNbr)
+
+    def getLaserEmbedingCommand(self, fileName, language):
+        FileUtils.removeIfExit(fileName+".overlap.emb")
+        #return self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_LASER_PATH)+'/tasks/embed/embed.sh {}.overlap {} {}.overlap.emb'.format(fileName, language, fileName)
+        return '$LASER/tasks/embed/embed.sh {}.overlap {} {}.overlap.emb'.format(fileName, language, fileName)
+
+
+    def getAlignCommand(self, orginal, target, overlapNbr):
+        scr_overlaps = orginal+".overlap"
+        trg_overlaps = target+".overlap"
+        return 'python "'+self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_PATH)+'/vecalign.py" --alignment_max_size '+str(overlapNbr)+' --src "{}" --tgt "{}" --src_embed "{}" "{}"  --tgt_embed "{}" "{}" '.format(orginal, target, scr_overlaps, scr_overlaps+".emb", trg_overlaps, trg_overlaps+".emb")
 
     def convertToInt(self, s):
         if s:
@@ -50,7 +59,14 @@ class VecalignAlignment(AbstractAlignment):
 
     def align(self):
         FileUtils.removeIfExit(self.output_file)
-        output = subprocess.check_output( self.getAlignCommand(self.to_process.path_to_document, self.to_align.path_to_document), shell=True)
+        overlapNbr = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_MAX_SIZE)
+        language = self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_LANGUAGE)
+        os.system(self.getOverLapCommand(self.to_process.path_to_document, overlapNbr))
+        os.system(self.getOverLapCommand(self.to_align.path_to_document, overlapNbr))
+        os.putenv('LASER', self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_LASER_PATH))
+        os.system(self.getLaserEmbedingCommand(self.to_process.path_to_document, language))
+        os.system(self.getLaserEmbedingCommand(self.to_align.path_to_document, language))
+        output = subprocess.check_output( self.getAlignCommand(self.to_process.path_to_document, self.to_align.path_to_document, overlapNbr), shell=True)
         inpAsArray = self.readFileToArray(self.to_process.path_to_document)
         trgAsArray = self.readFileToArray(self.to_align.path_to_document)
         strVal = str(output, 'utf-8') 

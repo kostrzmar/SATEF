@@ -76,8 +76,9 @@ CONF_ALIGNMENT_TOOL_TYPE_CATS_ALIGNMENT_SUBLEVEL_STRATEGY= "alignment.cats.suble
 
 CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_PATH="alignment.vecalign.path"
 CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_MAX_SIZE="alignment.vecalign.max.size"
-CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_SRC_OVERLAPS_PATH="alignment.vecalign.src.overlaps.path"
-CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_TRG_OVERLAPS_PATH="alignment.vecalign.trg.overlaps.path" 
+CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_LANGUAGE = "alignment.vecalign.language"
+CONF_ALIGNMENT_TOOL_TYPE_VECALIGN_LASER_PATH = "alignment.vecalign.laser.path"
+
 
 
 CONF_SEC_DATASET="dataset"

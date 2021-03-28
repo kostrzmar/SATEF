@@ -14,7 +14,7 @@ class CATSAlignment(AbstractAlignment):
         return 50
 
     def getOutputPrefix(self):
-        return "CATS"
+        return "CATS" +"_"+self.getConfigValue(self.getToolSecName(), ConfigConsts.CONF_ALIGNMENT_TOOL_TYPE_CATS_SIMILARITY_STRATEGY)
 
     def align(self):    
         FileUtils.removeIfExit(self.output_file)
