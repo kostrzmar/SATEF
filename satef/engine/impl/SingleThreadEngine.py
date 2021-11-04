@@ -14,6 +14,7 @@ class SingleThreadEngine(AbstractEngine):
     def doProcessing(self, uniqueProcessingId) -> None:
         data_set = self.getDataSet()
         pbar = tqdm(total=data_set.getTotalFiles(), desc="Progress")
+        self.is_reverse_processing = data_set.is_reverse
         is_processing_done = False
         evaluationMetrics = self.getEvaluation()
         while not is_processing_done:

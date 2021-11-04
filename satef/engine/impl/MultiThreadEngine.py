@@ -16,6 +16,7 @@ class MultiThreadEngine(AbstractEngine):
         data_set = self.getDataSet()
         pbar = tqdm(total=data_set.getTotalFiles(), desc="Progress")
         is_processing_done = False
+        self.is_reverse_processing = data_set.is_reverse
         evaluationMetrics = self.getEvaluation()
         num_workers=int(self.local_config_utils.getValue(ConfigConsts.CONF_SEC_ENGINE, ConfigConsts.CONF_ENGINE_EXECUTE_PARALLER_NBR_OF_PROCESSES))
         logging.info("Parallel processing with [{}] processes".format(num_workers))

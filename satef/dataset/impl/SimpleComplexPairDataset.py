@@ -19,9 +19,9 @@ class SimpleComplexPairDataset(AbstractDataset):
     def getFiles(self):
         filesInFolder = os.listdir(self.input_folder)
         for file in filesInFolder:
-            isReverse = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET,ConfigConsts.CONF_DATASET_ALIGNMENT_REVERSE)
+            self.isReverse = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET,ConfigConsts.CONF_DATASET_ALIGNMENT_REVERSE)
             fileMasksToProcess = []
-            if isReverse or eval(str(isReverse)):
+            if self.isReverse or eval(str(self.isReverse)):
                 fileMaskReverseToProcess = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_PARAPHRASE_MASK)
                 if fileMaskReverseToProcess.find(',')!=-1:
                     fileMasksToProcess = fileMaskReverseToProcess.split(",")   
@@ -34,18 +34,18 @@ class SimpleComplexPairDataset(AbstractDataset):
                     self.files.append(file)
 
     def getDirectionPrefix(self):
-        isReverse = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET,ConfigConsts.CONF_DATASET_ALIGNMENT_REVERSE)
-        if isReverse or eval(str(isReverse)):
+        self.isReverse = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET,ConfigConsts.CONF_DATASET_ALIGNMENT_REVERSE)
+        if self.isReverse or eval(str(self.isReverse)):
             return self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_PARAPHRASE_MASK_PREFIX) + "-"+ self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_ORIGINAL_MASK_PREFIX)
         else:
             return self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_ORIGINAL_MASK_PREFIX)+ "-"+self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_PARAPHRASE_MASK_PREFIX) 
 
     def getRespectiveDocumentToCompare(self, fileName):
         if fileName:
-            isReverse = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET,ConfigConsts.CONF_DATASET_ALIGNMENT_REVERSE)
+            #isReverse = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET,ConfigConsts.CONF_DATASET_ALIGNMENT_REVERSE)
             orginDocument = None
             targetDocument = None
-            if isReverse or eval(str(isReverse)):
+            if self.isReverse or eval(str(self.isReverse)):
                 orginDocument = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_PARAPHRASE_MASK)
                 targetDocument = self.getConfigValue(ConfigConsts.CONF_SEC_DATASET, ConfigConsts.CONF_DATASET_ORIGINAL_MASK)
             else:

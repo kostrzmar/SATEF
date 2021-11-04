@@ -12,6 +12,7 @@ class AbstractDataset(ABC):
         self.files = []
         self.files.append(self.getFiles())
         self.current_file = 0
+        self.is_reverse = False
 
         super().__init__()
 
